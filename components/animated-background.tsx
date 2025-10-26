@@ -28,9 +28,20 @@ export function AnimatedBackground() {
       mouseY = e.clientY - rect.top
     }
 
-    canvas.addEventListener("mousemove", handleMouseMove)
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect()
+        mouseX = e.touches[0].clientX - rect.left
+        mouseY = e.touches[0].clientY - rect.top
+      }
+    }
 
-    // Floating geometric shapes
+    canvas.addEventListener("mousemove", handleMouseMove)
+    canvas.addEventListener("touchmove", handleTouchMove, { passive: true })
+
+    const isMobile = window.innerWidth < 768
+    const shapeCount = isMobile ? 12 : 25
+
     interface Shape {
       x: number
       y: number
@@ -46,8 +57,6 @@ export function AnimatedBackground() {
     }
 
     const shapes: Shape[] = []
-    const shapeCount = 25
-
     for (let i = 0; i < shapeCount; i++) {
       const baseSize = Math.random() * 40 + 20
       const baseOpacity = Math.random() * 0.15 + 0.05
@@ -80,7 +89,6 @@ export function AnimatedBackground() {
     let lastMouseX = mouseX
     let lastMouseY = mouseY
 
-    // Scanlines
     let scanlineY = 0
 
     let animationFrameId: number
@@ -128,14 +136,13 @@ export function AnimatedBackground() {
     }
 
     const animate = () => {
-      // Bone white background
       ctx.fillStyle = "#F5F5DC"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       const time = Date.now() * 0.001
 
       const mouseMoved = Math.abs(mouseX - lastMouseX) > 2 || Math.abs(mouseY - lastMouseY) > 2
-      if (mouseMoved && Math.random() < 0.3) {
+      if (mouseMoved && Math.random() < (isMobile ? 0.15 : 0.3)) {
         particles.push({
           x: mouseX,
           y: mouseY,
@@ -167,14 +174,11 @@ export function AnimatedBackground() {
         ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size)
       }
 
-      // Update and draw shapes
       shapes.forEach((shape) => {
-        // Move shapes
         shape.x += shape.vx
         shape.y += shape.vy
         shape.rotation += shape.rotationSpeed
 
-        // Wrap around screen
         if (shape.x < -50) shape.x = canvas.width + 50
         if (shape.x > canvas.width + 50) shape.x = -50
         if (shape.y < -50) shape.y = canvas.height + 50
@@ -188,25 +192,19 @@ export function AnimatedBackground() {
         if (distance < influenceRadius) {
           const force = (influenceRadius - distance) / influenceRadius
 
-          // Push shapes away more dramatically
           shape.x += (dx / distance) * force * 3
           shape.y += (dy / distance) * force * 3
 
-          // Scale up size near cursor
           shape.size = shape.baseSize * (1 + force * 0.8)
 
-          // Increase opacity near cursor
           shape.opacity = Math.min(0.6, shape.baseOpacity + force * 0.4)
 
-          // Speed up rotation near cursor
           shape.rotationSpeed = (Math.random() - 0.5) * 0.05 * (1 + force)
         } else {
-          // Return to base values
           shape.size = shape.size * 0.95 + shape.baseSize * 0.05
           shape.opacity = shape.opacity * 0.95 + shape.baseOpacity * 0.05
         }
 
-        // Random glitch effect
         const glitchOffset = Math.random() < 0.02 ? (Math.random() - 0.5) * 10 : 0
 
         drawShape(shape, glitchOffset)
@@ -218,46 +216,46 @@ export function AnimatedBackground() {
       ctx.arc(mouseX, mouseY, 250, 0, Math.PI * 2)
       ctx.stroke()
 
-      ctx.strokeStyle = "rgba(0, 0, 0, 0.03)"
-      ctx.lineWidth = 1
-      const gridSize = 50
+      if (!isMobile) {
+        ctx.strokeStyle = "rgba(0, 0, 0, 0.03)"
+        ctx.lineWidth = 1
+        const gridSize = 50
 
-      for (let x = 0; x < canvas.width; x += gridSize) {
-        ctx.beginPath()
-        for (let y = 0; y <= canvas.height; y += 5) {
-          const dx = x - mouseX
-          const dy = y - mouseY
-          const distance = Math.sqrt(dx * dx + dy * dy)
-          const distortion = distance < 200 ? ((200 - distance) / 200) * 20 : 0
-          const offsetX = x + (dx / distance) * distortion
+        for (let x = 0; x < canvas.width; x += gridSize) {
+          ctx.beginPath()
+          for (let y = 0; y <= canvas.height; y += 5) {
+            const dx = x - mouseX
+            const dy = y - mouseY
+            const distance = Math.sqrt(dx * dx + dy * dy)
+            const distortion = distance < 200 ? ((200 - distance) / 200) * 20 : 0
+            const offsetX = x + (dx / distance) * distortion
 
-          if (y === 0) ctx.moveTo(offsetX, y)
-          else ctx.lineTo(offsetX, y)
+            if (y === 0) ctx.moveTo(offsetX, y)
+            else ctx.lineTo(offsetX, y)
+          }
+          ctx.stroke()
         }
-        ctx.stroke()
+
+        for (let y = 0; y < canvas.height; y += gridSize) {
+          ctx.beginPath()
+          for (let x = 0; x <= canvas.width; x += 5) {
+            const dx = x - mouseX
+            const dy = y - mouseY
+            const distance = Math.sqrt(dx * dx + dy * dy)
+            const distortion = distance < 200 ? ((200 - distance) / 200) * 20 : 0
+            const offsetY = y + (dy / distance) * distortion
+
+            if (x === 0) ctx.moveTo(x, offsetY)
+            else ctx.lineTo(x, offsetY)
+          }
+          ctx.stroke()
+        }
       }
 
-      for (let y = 0; y < canvas.height; y += gridSize) {
-        ctx.beginPath()
-        for (let x = 0; x <= canvas.width; x += 5) {
-          const dx = x - mouseX
-          const dy = y - mouseY
-          const distance = Math.sqrt(dx * dx + dy * dy)
-          const distortion = distance < 200 ? ((200 - distance) / 200) * 20 : 0
-          const offsetY = y + (dy / distance) * distortion
-
-          if (x === 0) ctx.moveTo(x, offsetY)
-          else ctx.lineTo(x, offsetY)
-        }
-        ctx.stroke()
-      }
-
-      // Animated scanline effect
       scanlineY = (scanlineY + 2) % canvas.height
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)"
       ctx.fillRect(0, scanlineY, canvas.width, 2)
 
-      // Random glitch lines
       if (Math.random() < 0.01) {
         const glitchY = Math.random() * canvas.height
         ctx.fillStyle = "rgba(0, 0, 0, 0.1)"
@@ -272,6 +270,7 @@ export function AnimatedBackground() {
     return () => {
       window.removeEventListener("resize", resizeCanvas)
       canvas.removeEventListener("mousemove", handleMouseMove)
+      canvas.removeEventListener("touchmove", handleTouchMove)
       cancelAnimationFrame(animationFrameId)
     }
   }, [])

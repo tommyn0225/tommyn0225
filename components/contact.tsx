@@ -22,7 +22,7 @@ export function Contact() {
         <Card className="border-4 border-foreground">
           <CardContent className="p-8">
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-4 border-r-2 border-foreground pr-6">
+              <div className="space-y-4 md:border-r-2 border-foreground md:pr-6">
                 <h3 className="text-sm font-bold tracking-wider">[GET_IN_TOUCH]</h3>
                 <p className="text-foreground/70 leading-relaxed text-xs font-mono">
                   Whether you're looking for a cloud security engineer, want to discuss AWS security best practices, or
@@ -67,7 +67,7 @@ export function Contact() {
                   >
                     <a href="mailto:tommyn@ucsc.edu">
                       <Mail className="w-4 h-4" />
-                      [SEND_EMAIL]
+                      <span className="truncate">[SEND_EMAIL]</span>
                     </a>
                   </Button>
                   <Button
@@ -78,7 +78,7 @@ export function Contact() {
                   >
                     <a href="https://www.linkedin.com/in/tommy-nguyen-ucsc" target="_blank" rel="noopener noreferrer">
                       <Linkedin className="w-4 h-4" />
-                      [CONNECT_LINKEDIN]
+                      <span className="truncate">[CONNECT_LINKEDIN]</span>
                     </a>
                   </Button>
                   <Button
@@ -89,7 +89,7 @@ export function Contact() {
                   >
                     <a href="https://github.com/tommyn0225" target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4" />
-                      [VIEW_GITHUB]
+                      <span className="truncate">[VIEW_GITHUB]</span>
                     </a>
                   </Button>
                   <Button
@@ -100,7 +100,7 @@ export function Contact() {
                   >
                     <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                       <FileText className="w-4 h-4" />
-                      [DOWNLOAD_RESUME]
+                      <span className="truncate">[DOWNLOAD_RESUME]</span>
                     </a>
                   </Button>
                 </div>
@@ -110,7 +110,7 @@ export function Contact() {
         </Card>
 
         <footer className="mt-16 text-center text-xs text-foreground/60 font-mono border-t-2 border-foreground pt-8">
-          <p>&gt; © 2025 TOMMY_NGUYEN // BUILT_WITH_NEXT.JS_AND_TAILWIND_CSS</p>
+          <p className="break-words">&gt; © 2025 TOMMY_NGUYEN // BUILT_WITH_NEXT.JS_AND_TAILWIND_CSS</p>
         </footer>
       </div>
     </section>

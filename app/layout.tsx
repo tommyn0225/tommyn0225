@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   description:
     "Computer Science student at UC Santa Cruz specializing in cloud security engineering and AWS infrastructure protection.",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.svg",
+  },
 }
 
 export default function RootLayout({

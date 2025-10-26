@@ -1,10 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Shield, Github } from "lucide-react"
+import { Shield, Github, Menu, X } from "lucide-react"
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +18,7 @@ export function Navigation() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     element?.scrollIntoView({ behavior: "smooth" })
+    setMobileMenuOpen(false)
   }
 
   return (
@@ -34,7 +36,8 @@ export function Navigation() {
             <Shield className="w-4 h-4" />
             <span className="font-bold text-sm tracking-wider">TOMMY_NGUYEN</span>
           </button>
-          <div className="flex items-center gap-1">
+
+          <div className="hidden md:flex items-center gap-1">
             <button
               onClick={() => scrollToSection("about")}
               className="text-xs px-3 py-2 text-foreground hover:bg-foreground hover:text-background transition-colors border border-foreground tracking-wider"
@@ -69,7 +72,53 @@ export function Navigation() {
               <Github className="w-4 h-4" />
             </a>
           </div>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 border-2 border-foreground hover:bg-foreground hover:text-background transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+
+        {mobileMenuOpen && (
+          <div className="md:hidden mt-4 border-2 border-foreground bg-background p-4 space-y-2">
+            <button
+              onClick={() => scrollToSection("about")}
+              className="w-full text-left text-xs px-3 py-2 text-foreground hover:bg-foreground hover:text-background transition-colors border border-foreground tracking-wider"
+            >
+              [ABOUT]
+            </button>
+            <button
+              onClick={() => scrollToSection("experience")}
+              className="w-full text-left text-xs px-3 py-2 text-foreground hover:bg-foreground hover:text-background transition-colors border border-foreground tracking-wider"
+            >
+              [EXPERIENCE]
+            </button>
+            <button
+              onClick={() => scrollToSection("projects")}
+              className="w-full text-left text-xs px-3 py-2 text-foreground hover:bg-foreground hover:text-background transition-colors border border-foreground tracking-wider"
+            >
+              [PROJECTS]
+            </button>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="w-full text-left text-xs px-3 py-2 text-foreground hover:bg-foreground hover:text-background transition-colors border border-foreground tracking-wider"
+            >
+              [CONTACT]
+            </button>
+            <a
+              href="https://github.com/tommyn0225"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 w-full text-left text-xs px-3 py-2 text-foreground hover:bg-foreground hover:text-background transition-colors border border-foreground tracking-wider"
+            >
+              <Github className="w-4 h-4" />
+              [GITHUB]
+            </a>
+          </div>
+        )}
       </div>
     </nav>
   )
