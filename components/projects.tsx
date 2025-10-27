@@ -1,7 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Github, Shield, Map } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Shield, Map } from "lucide-react"
 
 export function Projects() {
   const projects = [
@@ -16,6 +15,7 @@ export function Projects() {
         "Automated permission provisioning with Python",
         "Reduced data exposure risks for AI agents",
       ],
+      link: "https://github.com/tommyn0225",
     },
     {
       title: "CruzMaps",
@@ -28,6 +28,7 @@ export function Projects() {
         "Improved navigation precision with MapBox",
         "Full-stack development with modern tech stack",
       ],
+      link: "https://github.com/vznh/cruzmaps",
     },
   ]
 
@@ -49,67 +50,52 @@ export function Projects() {
           {projects.map((project, index) => {
             const Icon = project.icon
             return (
-              <Card key={index} className="border-2 border-foreground hover:bg-foreground/5 transition-all group">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="space-y-3">
-                      <div className="w-10 h-10 border-2 border-foreground flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all">
-                        <Icon className="w-5 h-5" />
+              <a key={index} href={project.link} target="_blank" rel="noopener noreferrer" className="block">
+                <Card className="border-2 border-foreground hover:bg-foreground/5 transition-all group cursor-pointer h-full">
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div className="space-y-3">
+                        <div className="w-10 h-10 border-2 border-foreground flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <CardTitle className="text-lg font-bold tracking-wide">&gt; {project.title}</CardTitle>
                       </div>
-                      <CardTitle className="text-lg font-bold tracking-wide">&gt; {project.title}</CardTitle>
                     </div>
-                  </div>
-                  <CardDescription className="text-xs leading-relaxed font-mono text-foreground/70">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div>
-                    <h4 className="text-xs font-bold mb-2 tracking-wider">[KEY_FEATURES]</h4>
-                    <ul className="space-y-1">
-                      {project.highlights.map((highlight, i) => (
-                        <li key={i} className="text-xs text-foreground/80 flex gap-2 font-mono">
-                          <span className="text-foreground">▪</span>
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold mb-2 tracking-wider">[TECHNOLOGIES]</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, i) => (
-                        <Badge
-                          key={i}
-                          variant="outline"
-                          className="text-xs border-foreground font-mono hover:bg-foreground hover:text-background"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
+                    <CardDescription className="text-xs leading-relaxed font-mono text-foreground/70">
+                      {project.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <h4 className="text-xs font-bold mb-2 tracking-wider">[KEY_FEATURES]</h4>
+                      <ul className="space-y-1">
+                        {project.highlights.map((highlight, i) => (
+                          <li key={i} className="text-xs text-foreground/80 flex gap-2 font-mono">
+                            <span className="text-foreground">▪</span>
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                    <div>
+                      <h4 className="text-xs font-bold mb-2 tracking-wider">[TECHNOLOGIES]</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, i) => (
+                          <Badge
+                            key={i}
+                            variant="outline"
+                            className="text-xs border-foreground font-mono hover:bg-foreground hover:text-background"
+                          >
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
             )
           })}
-        </div>
-
-        <div className="mt-12 text-center border-2 border-foreground p-8">
-          <p className="text-foreground/70 mb-4 text-xs font-mono">
-            &gt; Want to see more of my work? Check out my GitHub for additional projects and contributions.
-          </p>
-          <Button
-            variant="outline"
-            size="lg"
-            className="gap-2 bg-transparent border-2 border-foreground hover:bg-foreground hover:text-background font-mono text-xs tracking-wider"
-            asChild
-          >
-            <a href="https://github.com/tommyn0225" target="_blank" rel="noopener noreferrer">
-              <Github className="w-4 h-4" />
-              [VIEW_GITHUB_PROFILE]
-            </a>
-          </Button>
         </div>
       </div>
     </section>
