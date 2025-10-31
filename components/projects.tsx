@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Shield, Map } from "lucide-react"
+import Image from "next/image"
 
 export function Projects() {
   const projects = [
@@ -16,6 +17,7 @@ export function Projects() {
         "Reduced data exposure risks for AI agents",
       ],
       link: "https://github.com/tommyn0225",
+      image: "/images/google-drive-agents-preview.png",
     },
     {
       title: "CruzMaps",
@@ -29,6 +31,7 @@ export function Projects() {
         "Full-stack development with modern tech stack",
       ],
       link: "https://github.com/vznh/cruzmaps",
+      image: "/images/cruzmaps-preview.png",
     },
   ]
 
@@ -51,7 +54,18 @@ export function Projects() {
             const Icon = project.icon
             return (
               <a key={index} href={project.link} target="_blank" rel="noopener noreferrer" className="block">
-                <Card className="border-2 border-foreground hover:bg-foreground/5 transition-all group cursor-pointer h-full">
+                <Card className="border-2 border-foreground hover:bg-foreground/5 transition-all group cursor-pointer h-full overflow-hidden">
+                  {project.image && (
+                    <div className="relative w-full h-48 border-b-2 border-foreground overflow-hidden bg-background">
+                      <Image
+                        src={project.image || "/placeholder.svg"}
+                        alt={`${project.title} preview`}
+                        fill
+                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                      />
+                      <div className="absolute inset-0 bg-foreground/10 group-hover:bg-transparent transition-all" />
+                    </div>
+                  )}
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="space-y-3">
