@@ -16,18 +16,20 @@ export function About() {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-6 border-l-4 border-foreground pl-6">
             <p className="text-sm leading-relaxed text-foreground/80 font-mono">
-              &gt; I'm a Computer Science student at UC Santa Cruz with a passion for cybersecurity and cloud
-              infrastructure. My focus is on becoming a Cloud Security Engineer, specializing in AWS security
-              architecture and implementation.
+              &gt; Hi, I&apos;m Tommy Nguyen, a Computer Science student at UC Santa Cruz pursuing a degree in Computer
+              Science. I&apos;m an aspiring Security Engineer, specifically interested in Cloud Security. My long term
+              goal is to move into more managerial roles within the cybersecurity/technology field.
             </p>
             <p className="text-sm leading-relaxed text-foreground/80 font-mono">
-              &gt; With certifications in CompTIA Security+ and AWS Certified Security, I'm building a strong foundation
-              in both theoretical security principles and practical cloud security implementations. Currently studying
-              for CISSP to further deepen my expertise in information security.
+              &gt; Beyond the classroom, I&apos;m part of <strong>ISC2 Silicon Valley Chapter</strong>, and{" "}
+              <strong>Slug Security</strong>, where I continue exploring how AI and cybersecurity converge in both
+              enterprise and creative spaces. My certifications include <strong>CompTIA Security+</strong>,{" "}
+              <strong>AWS Certified Security</strong>, and <strong>Google Cybersecurity Certificate</strong>, and
+              I&apos;m currently studying for the <strong>CISSP</strong>.
             </p>
             <p className="text-sm leading-relaxed text-foreground/80 font-mono">
-              &gt; Through my work at xAI, UC Santa Cruz ITS, and various projects, I've gained hands-on experience in
-              secure system design, network security, and cloud infrastructure protection.
+              &gt; When I&apos;m not working, you&apos;ll find me watching movies, listening to music, camping, or
+              trying now new restaurants.
             </p>
           </div>
 
