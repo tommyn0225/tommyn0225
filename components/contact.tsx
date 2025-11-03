@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Linkedin, Github, FileText } from "lucide-react"
+import { Mail, Linkedin, Github } from "lucide-react"
 
 export function Contact() {
   return (
@@ -14,7 +14,7 @@ export function Contact() {
           </div>
           <div className="h-0.5 w-32 bg-foreground mx-auto" />
           <p className="text-sm text-foreground/70 max-w-2xl mx-auto font-mono">
-            &gt; I'm always open to discussing cloud security opportunities, collaborating on projects, or just
+            &gt; I&apos;m always open to discussing cloud security opportunities, collaborating on projects, or just
             connecting with fellow security enthusiasts.
           </p>
         </div>
@@ -25,8 +25,8 @@ export function Contact() {
               <div className="space-y-4 md:border-r-2 border-foreground md:pr-6">
                 <h3 className="text-sm font-bold tracking-wider">[GET_IN_TOUCH]</h3>
                 <p className="text-foreground/70 leading-relaxed text-xs font-mono">
-                  Whether you're looking for a cloud security engineer, want to discuss AWS security best practices, or
-                  explore collaboration opportunities, I'd love to hear from you.
+                  Whether you&apos;re looking for a cloud security engineer, want to discuss AWS security best
+                  practices, or explore collaboration opportunities, I&apos;d love to hear from you.
                 </p>
                 <div className="space-y-3 pt-4">
                   <a
@@ -37,7 +37,7 @@ export function Contact() {
                     <span>tommyn@ucsc.edu</span>
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/tommy-nguyen-ucsc"
+                    href="https://www.linkedin.com/in/tommyn0225/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-foreground/80 hover:text-foreground transition-colors text-xs font-mono"
@@ -76,7 +76,7 @@ export function Contact() {
                     size="lg"
                     asChild
                   >
-                    <a href="https://www.linkedin.com/in/tommy-nguyen-ucsc" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/tommyn0225/" target="_blank" rel="noopener noreferrer">
                       <Linkedin className="w-4 h-4" />
                       <span className="truncate">[CONNECT_LINKEDIN]</span>
                     </a>
@@ -90,17 +90,6 @@ export function Contact() {
                     <a href="https://github.com/tommyn0225" target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4" />
                       <span className="truncate">[VIEW_GITHUB]</span>
-                    </a>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="w-full justify-start gap-3 bg-transparent border-2 border-foreground hover:bg-foreground hover:text-background font-mono text-xs tracking-wider"
-                    size="lg"
-                    asChild
-                  >
-                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                      <FileText className="w-4 h-4" />
-                      <span className="truncate">[DOWNLOAD_RESUME]</span>
                     </a>
                   </Button>
                 </div>

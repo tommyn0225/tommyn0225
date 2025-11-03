@@ -54,7 +54,7 @@ export function Projects() {
             const Icon = project.icon
             return (
               <a key={index} href={project.link} target="_blank" rel="noopener noreferrer" className="block">
-                <Card className="border-2 border-foreground hover:bg-foreground/5 transition-all group cursor-pointer h-full overflow-hidden">
+                <Card className="border-2 border-foreground transition-all group cursor-pointer h-full overflow-hidden">
                   {project.image && (
                     <div className="relative w-full h-48 border-b-2 border-foreground overflow-hidden bg-background">
                       <Image
@@ -95,11 +95,7 @@ export function Projects() {
                       <h4 className="text-xs font-bold mb-2 tracking-wider">[TECHNOLOGIES]</h4>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, i) => (
-                          <Badge
-                            key={i}
-                            variant="outline"
-                            className="text-xs border-foreground font-mono hover:bg-foreground hover:text-background"
-                          >
+                          <Badge key={i} variant="outline" className="text-xs border-foreground font-mono">
                             {tech}
                           </Badge>
                         ))}

@@ -50,7 +50,7 @@ export function Experience() {
 
         <div className="grid gap-6">
           {experiences.map((exp, index) => (
-            <Card key={index} className="border-2 border-foreground hover:bg-foreground/5 transition-all">
+            <Card key={index} className="border-2 border-foreground transition-all">
               <CardHeader>
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-2">
@@ -74,11 +74,7 @@ export function Experience() {
                 </ul>
                 <div className="flex flex-wrap gap-2">
                   {exp.skills.map((skill, i) => (
-                    <Badge
-                      key={i}
-                      variant="outline"
-                      className="text-xs border-foreground font-mono hover:bg-foreground hover:text-background"
-                    >
+                    <Badge key={i} variant="outline" className="text-xs border-foreground font-mono">
                       {skill}
                     </Badge>
                   ))}

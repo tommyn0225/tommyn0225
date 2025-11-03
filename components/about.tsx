@@ -34,33 +34,33 @@ export function About() {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <Card className="border-2 border-foreground hover:bg-foreground hover:text-background transition-all group">
+            <Card className="border-2 border-foreground">
               <CardContent className="p-6 space-y-3">
-                <Shield className="w-6 h-6 group-hover:animate-pulse" />
+                <Shield className="w-6 h-6" />
                 <h3 className="font-bold text-xs tracking-wider">[SECURITY_FIRST]</h3>
                 <p className="text-xs font-mono">Implementing security best practices in every project</p>
               </CardContent>
             </Card>
 
-            <Card className="border-2 border-foreground hover:bg-foreground hover:text-background transition-all group">
+            <Card className="border-2 border-foreground">
               <CardContent className="p-6 space-y-3">
-                <Cloud className="w-6 h-6 group-hover:animate-pulse" />
+                <Cloud className="w-6 h-6" />
                 <h3 className="font-bold text-xs tracking-wider">[CLOUD_NATIVE]</h3>
                 <p className="text-xs font-mono">Specializing in AWS security architecture</p>
               </CardContent>
             </Card>
 
-            <Card className="border-2 border-foreground hover:bg-foreground hover:text-background transition-all group">
+            <Card className="border-2 border-foreground">
               <CardContent className="p-6 space-y-3">
-                <Lock className="w-6 h-6 group-hover:animate-pulse" />
+                <Lock className="w-6 h-6" />
                 <h3 className="font-bold text-xs tracking-wider">[ENCRYPTION]</h3>
                 <p className="text-xs font-mono">Cryptography and secure data handling</p>
               </CardContent>
             </Card>
 
-            <Card className="border-2 border-foreground hover:bg-foreground hover:text-background transition-all group">
+            <Card className="border-2 border-foreground">
               <CardContent className="p-6 space-y-3">
-                <Award className="w-6 h-6 group-hover:animate-pulse" />
+                <Award className="w-6 h-6" />
                 <h3 className="font-bold text-xs tracking-wider">[CERTIFIED]</h3>
                 <p className="text-xs font-mono">Multiple industry certifications</p>
               </CardContent>
