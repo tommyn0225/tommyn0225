@@ -1,37 +1,39 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Shield, Map } from "lucide-react"
+import { BookOpen, Swords } from "lucide-react" // Changed Shield to BookOpen for binder icon, Added Swords icon for card game
 import Image from "next/image"
 
 export function Projects() {
   const projects = [
     {
-      title: "Secure Google Drive Agents",
+      title: "PokeBinder",
       description:
-        "Developed a least-privilege access framework for AI agents in Google Drive, reducing data exposure risks and automating permission provisioning.",
-      icon: Shield,
-      technologies: ["Python", "Google Cloud", "Slack API", "Security"],
+        "A comprehensive Pokémon card collection tracker and local trading marketplace, similar to Facebook Marketplace but specifically for Pokémon card enthusiasts.",
+      icon: BookOpen,
+      technologies: ["TypeScript", "Next.js", "Tailwind CSS", "MongoDB", "API Integration"],
       highlights: [
-        "Implemented least-privilege access framework",
-        "Automated permission provisioning with Python",
-        "Reduced data exposure risks for AI agents",
+        "Track and manage Pokémon card collections",
+        "Monitor card values based on TCGPlayer market prices", // Added TCGPlayer market price tracking feature
+        "Set up local trades with other collectors",
+        "Search and filter cards by location and attributes",
       ],
-      link: "https://github.com/tommyn0225",
-      image: "/images/google-drive-agents-preview.png",
+      link: "https://github.com/tommyn0225/pokebinder-xd",
+      image: "/images/pokebinder-preview.png",
     },
     {
-      title: "CruzMaps",
+      title: "3CG",
       description:
-        "Enhanced campus navigation platform with events feature and improved location-finding precision using MapBox API.",
-      icon: Map,
-      technologies: ["TypeScript", "Next.js", "Tailwind CSS", "MongoDB", "MapBox API"],
+        "A strategic trading card game where players build custom decks and battle opponents. Each card features unique abilities and mechanics, similar to Magic: The Gathering.",
+      icon: Swords, // Using Swords icon to represent card battle game
+      technologies: ["TypeScript", "React", "Game Logic", "State Management", "Card Mechanics"],
       highlights: [
-        "Built events feature for campus activities",
-        "Improved navigation precision with MapBox",
-        "Full-stack development with modern tech stack",
+        "Build custom decks with unique card abilities",
+        "Strategic turn-based gameplay with mana system",
+        "Greek mythology-themed cards and characters",
+        "Real-time game state management and scoring",
       ],
-      link: "https://github.com/vznh/cruzmaps",
-      image: "/images/cruzmaps-preview.png",
+      link: "https://github.com/tommyn0225/3CG-Final",
+      image: "/images/3cg-preview.png",
     },
   ]
 
